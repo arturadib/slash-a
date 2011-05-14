@@ -214,86 +214,86 @@ _Throughout the examples, capital letters such as **X**, **Y**, etc stand for in
 
 **Equality test using `jumpifn` (outputs 1 if two inputs are identical, 0 otherwise)**
 
-        input/0/save/#
-        input/0/sub/abs/sign/save/# D[0] < 0 only if inputs are different
-        0/itof/1/save/# default answer is 1 (in D[1])
-        0/load/
-        jumpifn/#
-        	1/itof/1/save/# changes default answer if inputs are identical
-        jumphere/#
-        1/load/output/.
+    input/0/save/#
+    input/0/sub/abs/sign/save/# D[0] < 0 only if inputs are different
+    0/itof/1/save/# default answer is 1 (in D[1])
+    0/load/
+    jumpifn/#
+    	1/itof/1/save/# changes default answer if inputs are identical
+    jumphere/#
+    1/load/output/.
 
 **Integer/Fractional number classification (outputs 1 if X is integer, 0 otherwise)**
 
-        input/0/save/ftoi/itof/# D[0] := X, F := round(X)
-        0/div/save/# D[0] == 1 if X is an integer, D[0] != 1 otherwise
-        1/itof/0/sub/abs/sign/0/save/# D[0] == 0 if X is an integer, D[0] > 0 otherwise
-        0/itof/1/save/# D[1] := 0
-        0/load/# F < 0 if X is fractional
-        jumpifn/#
-        	1/itof/save/# D[1] := 1
-        jumphere/#
-        1/load/output/.
+    input/0/save/ftoi/itof/# D[0] := X, F := round(X)
+    0/div/save/# D[0] == 1 if X is an integer, D[0] != 1 otherwise
+    1/itof/0/sub/abs/sign/0/save/# D[0] == 0 if X is an integer, D[0] > 0 otherwise
+    0/itof/1/save/# D[1] := 0
+    0/load/# F < 0 if X is fractional
+    jumpifn/#
+    	1/itof/save/# D[1] := 1
+    jumphere/#
+    1/load/output/.
 
 **Integer/Fractional classification with nested jumpifn instructions (outputs 1 if both X and Y are integers, 0 otherwise)**
 
-        input/0/save/input/1/save/# D[0] := X, D[1] := Y
-        0/load/ftoi/itof/# F := round(X)
-        0/div/save/# D[0] == 1 if X is an integer, D[0] != 1 otherwise
-        1/itof/0/sub/abs/sign/0/save/# D[0] == 0 if X is an integer, D[0] < 0 otherwise
-        0/itof/2/save/# default answer is 0 (either X or Y is not an integer)
-        0/load/#
-        jumpifn/# will jump if X is not an integer
-        	1/load/ftoi/itof/# F := round(Y)
-        	1/div/save/# D[1] == 1 if Y is an integer, D[1] != 1 otherwise
-        	1/itof/1/sub/abs/sign/1/save/# D[1] == 0 if X is an integer, D[1] < 0 otherwise
-        	jumpifn/#
-        		1/itof/2/save/# X and Y are integers!
-        	jumphere/#
-        jumphere/#
-        2/load/output/.
+    input/0/save/input/1/save/# D[0] := X, D[1] := Y
+    0/load/ftoi/itof/# F := round(X)
+    0/div/save/# D[0] == 1 if X is an integer, D[0] != 1 otherwise
+    1/itof/0/sub/abs/sign/0/save/# D[0] == 0 if X is an integer, D[0] < 0 otherwise
+    0/itof/2/save/# default answer is 0 (either X or Y is not an integer)
+    0/load/#
+    jumpifn/# will jump if X is not an integer
+    	1/load/ftoi/itof/# F := round(Y)
+    	1/div/save/# D[1] == 1 if Y is an integer, D[1] != 1 otherwise
+    	1/itof/1/sub/abs/sign/1/save/# D[1] == 0 if X is an integer, D[1] < 0 otherwise
+    	jumpifn/#
+    		1/itof/2/save/# X and Y are integers!
+    	jumphere/#
+    jumphere/#
+    2/load/output/.
 
 **Positive/Negative classification loop using an If-Then-Else construction (outputs 1 if X is positive, 0 otherwise)**
 
-        0/label/#
-        	input/0/save/#
-        	jumpifn/# If positive...
-        		1/itof/output/# ...print 1
-        	jumphere/
-        	0/load/sign/#
-        	jumpifn/# Else...
-        		0/itof/output/# ...print 0
-        	jumphere/#
-        0/itof/gotoifp/. infinite loop (use Ctrl+C to abort)
+    0/label/#
+    	input/0/save/#
+    	jumpifn/# If positive...
+    		1/itof/output/# ...print 1
+    	jumphere/
+    	0/load/sign/#
+    	jumpifn/# Else...
+    		0/itof/output/# ...print 0
+    	jumphere/#
+    0/itof/gotoifp/. infinite loop (use Ctrl+C to abort)
 
 **Factorial function**
 
-        input/0/save/dec/1/save/0/mul/save/# D[0] := X*(X-1), D[1] := X-1
-        dec/dec/dec/
-        jumpifn/# we're not interested in 2!, 1!, or 0! ...
-        	0/label/#
-        		1/load/dec/save/0/mul/save/# D[1] decreases from X to 1, D[0] := X*(X-1)*...*D[1]
-        		1/load/dec/dec/# makes sure we exit the loop if D[1] == 1
-        	0/gotoifp/#
-        	0/load/output/#
-        jumphere/.
+    input/0/save/dec/1/save/0/mul/save/# D[0] := X*(X-1), D[1] := X-1
+    dec/dec/dec/
+    jumpifn/# we're not interested in 2!, 1!, or 0! ...
+    	0/label/#
+    		1/load/dec/save/0/mul/save/# D[1] decreases from X to 1, D[0] := X*(X-1)*...*D[1]
+    		1/load/dec/dec/# makes sure we exit the loop if D[1] == 1
+    	0/gotoifp/#
+    	0/load/output/#
+    jumphere/.
 
 **Monte Carlo (hit-and-miss) evaluation of the area of a circle of unit radius (=3.1415...)**
 
-      7/itof/0/save/10/itof/0/pow/save/# D[0] is the number of MC points (here 10^7)
-      0/itof/1/save/# D[1] contains the total number of points so far
-      0/itof/2/save/# D[2] contains the number of hits inside a quadrant
-      0/label/#
-              ran/3/save/mul/save/# D[3] := x^2
-              ran/4/save/mul/# F := y^2
-              3/add/save/# D[3] := x^2 + y^2
-              1/itof/3/sub/# F < 0 if missed
-              jumpifn/
-                      2/load/inc/save/# D[2] := D[2] + 1 only if it's a hit
-              jumphere/
-              1/load/inc/save/# D[1] := D[1] + 1 always
-              0/load/dec/save/# decrease counter
-      0/gotoifp/#
-      2/load/1/div/save/# D[1] := hits / total
-      4/itof/1/mul/# F := 4 * (area of quadrant)
-      output/.
+    7/itof/0/save/10/itof/0/pow/save/# D[0] is the number of MC points (here 10^7)
+    0/itof/1/save/# D[1] contains the total number of points so far
+    0/itof/2/save/# D[2] contains the number of hits inside a quadrant
+    0/label/#
+            ran/3/save/mul/save/# D[3] := x^2
+            ran/4/save/mul/# F := y^2
+            3/add/save/# D[3] := x^2 + y^2
+            1/itof/3/sub/# F < 0 if missed
+            jumpifn/
+                    2/load/inc/save/# D[2] := D[2] + 1 only if it's a hit
+            jumphere/
+            1/load/inc/save/# D[1] := D[1] + 1 always
+            0/load/dec/save/# decrease counter
+    0/gotoifp/#
+    2/load/1/div/save/# D[1] := hits / total
+    4/itof/1/mul/# F := 4 * (area of quadrant)
+    output/.
