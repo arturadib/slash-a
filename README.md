@@ -24,11 +24,11 @@ Or, more intelligibly,
     add/     # adds to F current data pointed to by I (i.e. D[0] := F)
     output/. # outputs result from F
 
-The instructions are atomic in that they don't need any arguments (unlike some [x86 assembly](http://en.wikipedia.org/wiki/Assembly_language) instructions, for example), so any random sequence of Slash/A instructions is a semantically correct program. This is important in genetic programming as it enables the free mutation of any instruction without worrying about its number and types of arguments. Instruction argumentation is effectively done through fixed registers (see below).
+The instructions are atomic in that they don't need any arguments (unlike some [x86 assembly](http://en.wikipedia.org/wiki/Assembly_language) instructions, for example), so **any random sequence of Slash/A instructions is a semantically correct program**. This is important in genetic programming as it enables the free mutation of any instruction without worrying about its number and types of arguments. Instruction argumentation is effectively done through fixed registers (see below).
 
 When expressed as Bytecodes, a Slash/A program is represented by a simple C++ vector of unsigned numbers, each of which corresponds to an instruction. A mutation operation is thus a simple replacement of a number in such a vector by another random integer, while a crossing-over operation can be accomplished by simply cutting-and-pasting the appropriate vector segments into another vector.
 
-Because one can map any instruction from a Turing-complete language (C, Pascal, etc) into a Slash/A code, Slash/A itself is Turing-complete, though it needn't be so (as one can pick and choose which instructions to enable).
+Because one can map any instruction from a Turing-complete language (C, Pascal, etc) into a Slash/A code, **Slash/A is Turing-complete**, though it needn't be so (as one can pick and choose which instructions to enable).
 
 [1] [Genetic Programming: An Introduction](http://www.amazon.com/Genetic-Programming-Introduction-Artificial-Intelligence/dp/155860510X)  
 [2] [Genetic Programming: On the Programming of Computers by Means of Natural Selection](http://www.amazon.com/Genetic-Programming-Computers-Selection-Adaptive/dp/0262111705)
