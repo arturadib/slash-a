@@ -19,9 +19,9 @@ Or, more intelligibly,
 
     input/   # gets an input from user and saves it to register F
     0/       # sets register I = 0
-    save/    # saves content of F into data vector D[I] (i.e. D[0])
+    save/    # saves content of F into data vector D[I] (i.e. D[0] := F)
     input/   # gets another input, saves to F
-    add/     # adds to F current data pointed to by I (i.e. D[0])
+    add/     # adds to F current data pointed to by I (i.e. D[0] := F)
     output/. # outputs result from F
 
 The instructions are atomic in that they don't need any arguments (unlike some [x86 assembly](http://en.wikipedia.org/wiki/Assembly_language) instructions, for example), so any random sequence of Slash/A instructions is a semantically correct program. This is important in genetic programming as it enables the free mutation of any instruction without worrying about its number and types of arguments. Instruction argumentation is effectively done through fixed registers (see below).
