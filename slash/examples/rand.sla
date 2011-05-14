@@ -1,0 +1,8 @@
+# prints 10 random numbers
+
+9/itof/0/save/# D[0] is the counter
+0/label/#
+  ran/output/#
+  0/load/dec/save/#
+0/gotoifp/.
+

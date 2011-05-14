@@ -1,0 +1,9 @@
+# hello world (adds two numbers)
+
+input/   # gets an input from user and saves it to register F
+0/       # sets register I = 0
+save/    # saves content of F into data vector D[I] (i.e. D[0])
+input/   # gets another input, saves to F
+add/     # adds to F current data pointed to by I (i.e. D[0])
+output/. # outputs result from F
+

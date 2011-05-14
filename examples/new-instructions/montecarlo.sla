@@ -1,0 +1,18 @@
+7/itof/0/save/10/itof/0/pow/save/# D[0] is the number of MC points (here 10^7)
+0/itof/1/save/# D[1] contains the total number of points so far
+0/itof/2/save/# D[2] contains the number of hits inside a quadrant
+0/label/#
+        ran/3/save/# D[3] := x
+        ran/4/save/# F := y
+        3/DIST/save/# D[3] := sqrt(x^2 + y^2)  <----  this line contains the call to the new instruction
+        1/itof/3/sub/# F < 0 if missed
+        jumpifn/
+                2/load/inc/save/# D[2] := D[2] + 1 only if it's a hit
+        jumphere/
+        1/load/inc/save/# D[1] := D[1] + 1 always
+        0/load/dec/save/# decrease counter
+0/gotoifp/#
+2/load/1/div/save/# D[1] := hits / total
+4/itof/1/mul/# F := 4 * (area of quadrant)
+output/.
+
