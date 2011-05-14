@@ -149,7 +149,7 @@ _(These 'instructions' are only implemented in the `source2ByteCode()` function;
 *	`#`: end-of-line - will cause the interpreter to ignore the rest of the current line (including slashes);
 * `.`: end-of-code - will cause the interpreter to stop interpreting the rest of the code.
 
-## Error Handling
+## Error handling
 
 Every invalid operation is ignored during program execution (e.g. going to an undefined label, reading from an unsaved variable, etc).
 
