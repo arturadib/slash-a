@@ -39,7 +39,7 @@ Because one can map any instruction from a Turing-complete language (C, Pascal, 
 - **No function argumentation.** Because the code is expressed as a string of atomic instructions, any randomly generated code is semantically correct. Inspired by [Avida](http://avida.devosoft.org/);
 - **Extensible instruction set.** Slash/A comes with a Default Instruction Set (DIS) covering most elementary instructions for flow control, mathematics, etc (see below), but users can introduce any number of custom instructions with simple C++ classes;
 
-## Compilation
+## Getting started
 
 Slash/A only needs `g++` and its standard libraries. There are no other dependencies. 
 
@@ -48,12 +48,12 @@ Compile the Slash/A library `libslasha.a` first:
     $ cd lib
     $ make
 
-Compile the provided command-line interpreter `slash`:
+The source `slash/main.cpp` contains a simple application of the Slash/A library (a command-line interpreter). Take a look at it as a first example on how to use the library (< 100 lines). To compile it:
 
     $ cd slash
     $ make
 
-Test the interpreter by running the example `add.sla` and entering two arbitrary numbers:
+To test the interpreter, run one of the examples under `slash/examples`:
 
     $ cd slash
     $ ./slash examples/add.sla
@@ -66,7 +66,7 @@ Test the interpreter by running the example `add.sla` and entering two arbitrary
 
     Total number of operations: 6
     Total number of invalid operations: 0
-    Total number of inputs before an output: 2    
+    Total number of inputs before an output: 2
 
 ## Memory resources
 
@@ -90,6 +90,8 @@ An intuitive depiction of the memory resources available to Slash/A programs is 
 - It is not possible to enter floating-point constants directly into the code. It is expected that if a floating-point constant is important to solve the problem at hand, the evolving codes will find their own way to construct them (see examples below).
 
 ## Default instruction set (DIS)
+
+_NOTE: For performance reasons, all DIS instructions are implemented inline in `lib/SlashA_DIS.h`. (The compiler will inline the code whenever possible, avoiding a round-trip to a new function)._
 
 **Numeric instructions**
 
