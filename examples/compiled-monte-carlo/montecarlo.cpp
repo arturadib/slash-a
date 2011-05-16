@@ -8,7 +8,7 @@
 #include <iomanip>
 #include <string>
 #include <cmath>
-#include "NR-ran2.h"
+#include "NR-ran2.hpp"
 
 using namespace std;
 

@@ -27,7 +27,7 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include <cmath>
-#include "SlashA.h"
+#include "SlashA.hpp"
 
 inline double p2(double x) { return x*x; }
 

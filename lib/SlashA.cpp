@@ -24,8 +24,8 @@
 #include <ctime>
 #include <unistd.h> // contains the alarm() function used for timing-out the interpreter
 #include <signal.h> // contains the signal() function to handle the alarm
-#include "SlashA.h"
-#include "SlashA_DIS.h"
+#include "SlashA.hpp"
+#include "SlashA_DIS.hpp"
 
 using namespace std;
 

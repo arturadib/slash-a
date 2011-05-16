@@ -1,6 +1,6 @@
 /*
  *
- *  SlashA.h
+ *  SlashA.hpp
  *
  *  Copyright (C) 2004-2011 Artur B Adib
  *

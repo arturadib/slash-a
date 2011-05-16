@@ -22,7 +22,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "SlashA.h"
+#include "SlashA.hpp"
 
 using namespace std;
 

@@ -21,7 +21,7 @@
 
 #include <cmath>
 #include <sstream>
-#include "NR-ran2.h"
+#include "NR-ran2.hpp"
 
 namespace SlashA 
 {

@@ -91,7 +91,7 @@ An intuitive depiction of the memory resources available to Slash/A programs is 
 
 ## Default instruction set (DIS)
 
-_NOTE: For performance reasons, all DIS instructions are implemented inline in `lib/SlashA_DIS.h`. (The compiler will inline the code whenever possible, avoiding a round-trip to a new function)._
+_NOTE: For performance reasons, all DIS instructions are implemented inline in `lib/SlashA_DIS.hpp`. (The compiler will inline the code whenever possible, avoiding a round-trip to a new function)._
 
 **Numeric instructions**
 
